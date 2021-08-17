@@ -1,4 +1,7 @@
+package com.util.characterclasses;
+
 import java.util.Scanner;
+import com.util.main.*;
 
 /**
  * This class executes the story for the hunter class
@@ -9,16 +12,17 @@ import java.util.Scanner;
  * horrid beast that has been thinning flocks of sheep and cattle, even a stray dog or two. You must track it and
  * kill it without getting killed yourself.
  */
-public class Hunter {
+public class Hunter extends CharacterRoles {
 
-    public Character hero;
+
+    public Player hero = new Player();
     public static Scanner sc = new Scanner(System.in);
     public String answer = "";
     int e = -1; //trivial variable to break out of while loop
 
     public Hunter() {}
 
-    public void story(Character player) {
+    public void story(Player player) {
         this.hero = player;
 
         System.out.println("/////*****/////*****/////*****/////*****/////*****/////\n");

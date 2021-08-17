@@ -1,4 +1,6 @@
-public class Character {
+package com.util.main;
+
+public class Player {
 
     public String name;
     public String species;
@@ -14,10 +16,10 @@ public class Character {
 
     public String characterClass;
 
-    public Character() {}
+    public Player() {}
 
-    public Character(String name, String species, int intelligence, int wisdom, int charm, int strength,
-                     int perception, int luck, String charClass) {
+    public Player(String name, String species, int intelligence, int wisdom, int charm, int strength,
+                  int perception, int luck, String charClass) {
         this.name = name;
         this.species = species;
         this.intelligence = intelligence;

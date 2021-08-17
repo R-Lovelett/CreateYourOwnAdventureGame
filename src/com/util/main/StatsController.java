@@ -1,3 +1,5 @@
+package com.util.main;
+
 public class StatsController {
 
     int intelligence;

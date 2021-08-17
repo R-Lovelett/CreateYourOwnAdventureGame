@@ -1,5 +1,12 @@
+package com.util.main;
+
+import com.util.characterclasses.*;
+
 import java.util.Scanner;
 
+/**
+ *
+ */
 public class Main {
 
     public static Scanner sc = new Scanner(System.in);
@@ -8,6 +15,9 @@ public class Main {
         startGame();
     }
 
+    /**
+     * This method starts the game, presenting a welcome screen and starting character creation process before actually starting game
+     */
     public static void startGame() {
         System.out.println("/////*****/////*****/////*****/////*****/////*****/////");
         System.out.println("\t\t\t  Welcome to the Magical World of:");
@@ -21,7 +31,7 @@ public class Main {
         System.out.println("Before we begin, you must build your character you will play as!");
         System.out.println("");
 
-        Character player1 = new Character();
+        Player player1 = new Player();
 
         String name = setName();
         String species = setSpecies();
@@ -43,12 +53,20 @@ public class Main {
         confirmAdventure(player1);
     }
 
+    /**
+     * This method simply takes in the next line entered as the character's name
+     * @return String of entered name of player character
+     */
     public static String setName() {
         System.out.println("First and foremost, enter a name for your Character: ");
         String charName = sc.nextLine();
         return charName;
     }
 
+    /**
+     * This method helps user choose their character's species, which subsequently affects background stats
+     * @return String of character species chosen
+     */
     public static String setSpecies() {
         int e = -1; //trivial variable to break out of while loop
         String answer = "";
@@ -90,6 +108,10 @@ public class Main {
         return species;
     }
 
+    /**
+     * This method walks through the process of determining the player character's stats.
+     * @return Object com.util.main.StatsController containing all the user determined stats of their choosing
+     */
     public static StatsController setStats() {
         int str = -1;
         int intel = -1;
@@ -180,6 +202,10 @@ public class Main {
         return stats;
     }
 
+    /**
+     *  This method helps the player choose their character class, and thus some special abilities and weapons
+     * @return String or chosen class
+     */
     public static String setClass() {
         int e = -1; //trivial variable to break out of while loop
         String answer = "";
@@ -191,7 +217,7 @@ public class Main {
             System.out.println("A. Hunter");
             answer = sc.nextLine();
 
-            String[] acceptedAnswers = {"a", "hunter"}; //soon to come: warrior/fight, mage, priest
+            String[] acceptedAnswers = {"a", "hunter"}; //TODO: soon to come: warrior/fight, mage, priest
 
             for (int i = 0; i < acceptedAnswers.length; i++) { //for loop to verify user input as acceptable answer
                 if (answer.equalsIgnoreCase(acceptedAnswers[i])) {
@@ -212,7 +238,11 @@ public class Main {
         return charClass;
     }
 
-    public static void confirmAdventure(Character player) { //relay all information back to user for final confirmation and then start the story!
+    /**
+     * This method wraps up the character building sequence, showing the player their choices to get final
+     * approval, then starts the game on confirmation. Else, restart process.
+     */
+    public static void confirmAdventure(Player player) { //relay all information back to user for final confirmation and then start the story!
         String answer = "";
         System.out.println("\nCongrats! You have finished making your character. But before we begin, please confirm one" +
                 "\nmore time that all the information you entered is correct. This information cannot be changed once the story begins!\n");
@@ -228,7 +258,7 @@ public class Main {
             System.out.println("\nFantastic! And now, with your character created, you are now ready to set off on your adventure!\n");
 
             if (player.getCharacterClass().equalsIgnoreCase("hunter")) {
-                Hunter hunterAdventure = new Hunter();
+                Hunter hunterAdventure = new com.util.characterclasses.Hunter();
                 hunterAdventure.story(player);
             } else if(player.getCharacterClass().equalsIgnoreCase("warrior")) {
                 //TBC
